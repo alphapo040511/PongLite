@@ -19,14 +19,14 @@ public class PlayerContol : MonoBehaviour
             transform.Translate(Vector2.down * Speed * Time.deltaTime);         //아래로 이동  (델타 타임은 추후에 추가)
         }
 
-        if(transform.position.y > 3.5f)
+        if(transform.position.y > 3.5f)                                         //플레이어의 y 좌표가 3.5보다 높을때
         {
-            transform.position = new Vector2(transform.position.x, 3.5f);
+            transform.position = new Vector2(transform.position.x, 3.5f);       //플레이어의 y 좌표를 3.5로 이동
         }
 
-        if (transform.position.y < -3.5f)
+        if (transform.position.y < -3.5f)                                       //플레이어의 y 좌표가 -3.5보다 낮을때
         {
-            transform.position = new Vector2(transform.position.x, -3.5f);
+            transform.position = new Vector2(transform.position.x, -3.5f);      //플레이어의 y 좌표를 -3.5로 이동
         }
     }
 }

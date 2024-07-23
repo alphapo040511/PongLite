@@ -7,7 +7,7 @@ public class BallMovemet : MonoBehaviour
     public float Speed = 5.0f;          //공의 속도
     public int VerticalDirection = 1;   //상하 방향
     public int HorizontalDirection = 1; //좌우 방향
-    public Rigidbody2D rb;
+    public Rigidbody2D rb;              //물체의 물리 적용을 위한 Rigidbody
     
     void Start()
     {
@@ -24,8 +24,6 @@ public class BallMovemet : MonoBehaviour
 
         VerticalDirection = 1;                              //공의 상하 방향을 아래로 설정
 
-        transform.position = new Vector2(0, 3);             //공의 위치를 (0,0)으로 초기화
-
         rb.velocity = new Vector2(Speed * HorizontalDirection, Speed * VerticalDirection);
     }
 
@@ -33,17 +31,17 @@ public class BallMovemet : MonoBehaviour
     {
         Speed += 0.5f;
 
-        if(collision.collider.transform.tag == "Wall")              //충돌한 오브젝트의 tag 가 Wall 일때
+        if(collision.transform.tag == "Wall")                       //충돌한 오브젝트의 tag 가 Wall 일때
         {
             VerticalDirection *= -1;                                //공의 상하 이동 방향을 반전 시킨다.
 
         }
 
-        if (collision.collider.transform.tag == "Player")           //충돌한 오브젝트의 tag 가 Player 일때
+        if (collision.transform.tag == "Player")                    //충돌한 오브젝트의 tag 가 Player 일때
         {
             HorizontalDirection *= -1;                              //공의 좌우 이동 방향을 반전 시킨다.
         }
 
-        rb.velocity = new Vector2(Speed * HorizontalDirection, Speed * VerticalDirection);
+        rb.velocity = new Vector2(Speed * HorizontalDirection, Speed * VerticalDirection);      //공의 속도를 변경
     }
 }
